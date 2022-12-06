@@ -1,6 +1,12 @@
 package com.arm.tables;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 @Entity
 public class Autorization {
+
+@Id
     private int idSotr;//id
     private String login;
     private String password;

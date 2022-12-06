@@ -1,5 +1,11 @@
 package com.arm.tables;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.ToString;
+
 import java.sql.Date;
 
 @Entity
@@ -86,5 +92,22 @@ public class Cards {
 
     public void setLinks(String links) {
         this.links = links;
+    }
+public Cards(){}
+    public Cards( int idOtv, String numberCard, int numberLetter, int system, Date dateCorrect, Date dateCreate, Date sendLetter, String links) {
+        this.idOtv = idOtv;
+        this.numberCard = numberCard;
+        this.numberLetter = numberLetter;
+        this.system = system;
+        this.dateCorrect = dateCorrect;
+        this.dateCreate = dateCreate;
+        this.sendLetter = sendLetter;
+        this.links = links;
+    }
+    public String ToString(){
+
+        return String.format(
+                "Cards[idCards=%d, idOtv=%d, links='%s',numberCard='%s',numberLetter=%d,system=%d,dateCorrect=%tB,dateCreate=%tB,sendLetter=%tB]",
+                idCards, idOtv,links,numberCard,numberLetter,system,dateCorrect,dateCreate,sendLetter);
     }
 }
