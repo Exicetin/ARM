@@ -22,18 +22,19 @@ public class CardsDDL  {
                 .setParameter(9,cards.getLinks())
                 .executeUpdate();
     }
-    public Cards saveCustomer(Cards savedCards) {
-        Cards cards = new Cards();
-                cards.setIdCards(savedCards.getIdCards());
-                cards.setIdOtv(savedCards.getIdOtv());
-                cards.setNumberCard(savedCards.getNumberCard());
-                cards.setNumberLetter(savedCards.getNumberLetter());
-                cards.setSystem(savedCards.getSystem());
-                cards.setDateCorrect(savedCards.getDateCorrect());
-                cards.setDateCreate(savedCards.getDateCreate());
-                cards.setSendLetter(savedCards.getSendLetter());
-                cards.setLinks(savedCards.getLinks());
 
-                return CardService.save(savedCards);
-    }
+//    public Cards saveCustomer(Cards savedCards) {   //Апдейт
+//        Cards cards = new Cards();
+//                cards.setIdCards(savedCards.getIdCards());
+//                cards.setIdOtv(savedCards.getIdOtv());
+//                cards.setNumberCard(savedCards.getNumberCard());
+//                cards.setNumberLetter(savedCards.getNumberLetter());
+//                cards.setSystem(savedCards.getSystem());
+//                cards.setDateCorrect(savedCards.getDateCorrect());
+//                cards.setDateCreate(savedCards.getDateCreate());
+//                cards.setSendLetter(savedCards.getSendLetter());
+//                cards.setLinks(savedCards.getLinks());
+//
+//                return CardService.save(savedCards);
+//    }
 }
