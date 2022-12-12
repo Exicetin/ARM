@@ -14,7 +14,7 @@ public class MenuController {
         return "orders_list";
     }
 
-    @RequestMapping(value = "/cards_list", method = GET)
+    @RequestMapping(value = "/cards/cards_list", method = GET)
     public String getCardsList(){
         return "cards_list";
     }

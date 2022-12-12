@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Карточка №</title>
+  <link rel="stylesheet" type="text/css" media="all" href="../../css/card_view.css"/>
 </head>
 <body>
 <div th:insert="menu.html::menu">
@@ -91,24 +92,25 @@
     <tr>
       <td class="tm1">
         <form th:action="/adjust">
-        <input type="submit" value="Корректировать" id="C_CHANGES_AC" onclick="Correct()">
+        <input type="submit" value="Корректировать" id="C_CHANGES_CARD" onclick="Correct()">
         </form>
       </td>
-      <td class="tm1">
-        <form>
-        <input type="submit" value="В эталон" id="C_ADD_E"/>
-        </form>
-      </td>
+<!--      <td class="tm1">-->
+<!--        <form>-->
+<!--        <input type="submit" value="В эталон" id="C_STAT"/>-->
+<!--  &lt;!&ndash;          Выпадающий список с соответствующими пунктами &ndash;&gt;-->
+<!--        </form>-->
+<!--      </td>-->
       <td class="tm1">
         <form th:action="/cards_list">
         <input type="submit" value="Закрыть" id="C_CLOSE"/>
         </form>
       </td>
-      <td class="tm1">
-        <form th:action="/story">
-        <input type="submit" value="История" id="C_HISTORY"/>
-        </form>
-      </td>
+<!--      <td class="tm1">-->
+<!--        <form th:action="/story">-->
+<!--        <input type="submit" value="История" id="C_HISTORY"/>-->
+<!--        </form>-->
+<!--      </td>-->
     </tr>
   </table>
 </div>
