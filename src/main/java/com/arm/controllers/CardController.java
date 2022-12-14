@@ -40,12 +40,12 @@ public ModelAndView cards() {
         return "cards_edit";
     }
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveCustomer(@ModelAttribute("customer") Cards cards) {
+    public String saveCustomer(@ModelAttribute("cards") Cards cards) {
         cardsService.save(cards);
         return "redirect:/";//перекид на card_list
     }
     @RequestMapping("/korr")
-    public ModelAndView editCustomerForm(@RequestParam int idCards) {
+    public ModelAndView editCardsForm(@RequestParam int idCards) {
         ModelAndView mav = new ModelAndView("cards_list");
         Cards cards = cardsService.get(idCards);
         mav.addObject("cards", cards);
@@ -95,8 +95,6 @@ public ModelAndView cards() {
 //        <tr>
 //            <th>ID</th>
 //            <th>Name</th>
-//
-//
 //        </tr>
 //        <c:forEach items="${result}" var="cards">
 //        <tr>

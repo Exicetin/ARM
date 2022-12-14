@@ -65,11 +65,19 @@ public class CardServiceImpl implements CardService {
         return buildCardResponse(cardsRepository.save(cards));
     }
 
+
     //Удаляем пользователя по id
     @Override
     @Transactional
     public void delete(@NotNull Integer IdCard) {
         cardsRepository.deleteById(IdCard);
+    }
+
+    @NotNull
+    @Transactional
+    @Override
+    public List<CardV2> search(String keyword) {
+        return null;
     }
 
     @NotNull
