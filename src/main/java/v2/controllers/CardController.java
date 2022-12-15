@@ -1,6 +1,5 @@
 package v2.controllers;
 
-import com.arm.tables.Cards;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,10 +27,14 @@ public class CardController {
 //        return cardService.findAll();
 //    }
     @GetMapping("/card_list")
-    public String findAll() {
-         cardService.findAll();
-         return "card_view";
+    public ModelAndView openList() {
+        List<CardResponse> cardsList = cardService.findAll();
+        ModelAndView mav = new ModelAndView("card_list");
+        mav.addObject("listCards", cardsList);
+        return mav;
     }
+
+
 //    //Получаем карточку по id
 //    @GetMapping(value = "/{IdCard}", produces = APPLICATION_JSON_VALUE)
 //    public CardResponse findById(@PathVariable Integer IdCard) {

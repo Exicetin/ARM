@@ -1,7 +1,7 @@
 package v2.Service;
 
 
-import com.arm.tables.Cards;
+
 import org.jetbrains.annotations.NotNull;
 
 import v2.domain.CardV2;

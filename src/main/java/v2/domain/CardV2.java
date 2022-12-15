@@ -19,9 +19,9 @@ public class CardV2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCards;//id
-
-    @Column(name = "login",nullable = false, unique = true)
-    private String login;// глянуть потом мб зацепиться про проверку прав
+//
+//    @Column(name = "login",nullable = false, unique = true)
+//    private String login;// глянуть потом мб зацепиться про проверку прав
 
     @Column(name = "idOtv")
     private int idOtv;//Ответсвенный
@@ -41,18 +41,18 @@ public class CardV2 {
     private String links;//ссылка на письмо
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CardV2 cardV2 = (CardV2) o;
-        return login.equals(cardV2.login);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(login);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        CardV2 cardV2 = (CardV2) o;
+//        return login.equals(cardV2.login);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(login);
+//    }
 
 
     public String ToString(){
