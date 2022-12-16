@@ -26,7 +26,7 @@ public class CardController {
 //    public List<CardResponse> findAll() {
 //        return cardService.findAll();
 //    }
-    @GetMapping("/card_list")
+    @GetMapping("/")
     public ModelAndView openList() {
         List<CardResponse> cardsList = cardService.findAll();
         ModelAndView mav = new ModelAndView("card_list");
