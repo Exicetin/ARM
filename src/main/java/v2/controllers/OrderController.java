@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import v2.Service.OrderService;
-import v2.Service.SystemService;
+//import v2.Service.SystemService;
 import v2.domain.Orders;
 import v2.logic.NextOrderNumber;
 import v2.model.request.CreateOrderRequest;
@@ -25,7 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final SystemService systemService;
+//    private final SystemService systemService;
     private final OrderService orderService;
 
     //Получаем весь список карточек
@@ -88,7 +88,7 @@ public class OrderController {
         ModelAndView mav = new ModelAndView("order_create");
         CreateOrderRequest cr = new CreateOrderRequest();
         mav.addObject("order_create", cr);
-        mav.addObject("systemList", systemService.findAll());
+//        mav.addObject("systemList", systemService.findAll());
         return mav;
     }
 
@@ -106,9 +106,7 @@ public class OrderController {
         return "redirect:order_list";
     }
 
-
     //Для подтягивания шаблонных нарядов на вход строковое значение типа наряда
-
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{idOrder}")
     public String delete(@RequestParam int idOrder) {
@@ -121,6 +119,7 @@ public class OrderController {
         mav.addObject("result", result);
         return mav;
     }
+
     //Для получения следующего номера Наряда на вход нужно передать Систему в строковом формате
     public String nextOrderNumber(String sys) {
         NextOrderNumber nextOrderNumber = new NextOrderNumber(orderService);
@@ -158,6 +157,7 @@ public class OrderController {
         ModelAndView mav = new ModelAndView("order_edit_template");
         CreateOrderRequest co = new CreateOrderRequest();
         mav.addObject("orderTemplate", orderService.findById(idOrders));
+//        mav.addObject("systemList", systemService.findAll());
         return mav;
     }
 

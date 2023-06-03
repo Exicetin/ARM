@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Oops</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/page_not_found.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/menu/menu::menu}">
+</div>
+
+<div th:replace="~{fragments/errors/error404::error}">
+</div>
+
+</body>
+</html>
