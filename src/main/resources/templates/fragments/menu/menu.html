@@ -13,151 +13,57 @@
 
 </head>
 <body>
-<!--<header class="Menu" th:fragment="menu">-->
-<!--    <div class="topnav" id="myTopnav" th:fragment="menu">-->
-<!--        <div class="navbar">-->
-<!--            <a th:href="@{/resources/templates/order_list}">-->
-<!--                Наряды-->
-<!--            </a>-->
-<!--        </div>-->
-<!--&lt;!&ndash;        <div class="navbar">&ndash;&gt;-->
-<!--&lt;!&ndash;            <a th:href="@{/resources/templates/card_list}">&ndash;&gt;-->
-<!--&lt;!&ndash;                Сборки&ndash;&gt;-->
-<!--&lt;!&ndash;            </a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--        <div class="navbar">-->
-<!--            <a th:href="@{/resources/templates/page_with_errors}">-->
-<!--                Доска-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="navbar">-->
-<!--            <a th:href="@{/resources/templates/page_with_errors}">-->
-<!--                Сервисы-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="navbar">-->
-<!--            <div class="dropdown">-->
-<!--                <button class="dropbtn">Настройки АРМа-->
-<!--                    <i class="fa fa-caret-down"></i>-->
-<!--                </button>-->
-<!--                <div class="dropdown-content">-->
-<!--                    <a th:href="@{/resources/templates/page_with_errors}">Пользователи</a>-->
-<!--                    <a th:href="@{/resources/templates/page_with_errors}">Группы</a>-->
-<!--                    <a th:href="@{/resources/templates/page_with_errors}">Системы</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="navbar">-->
-<!--            <div class="dropdown">-->
-<!--                <button class="dropbtn">Настройки-->
-<!--                    <i class="fa fa-caret-down"></i>-->
-<!--                </button>-->
-<!--                <div class="dropdown-content">-->
-<!--                    <a th:href="@{/resources/templates/page_with_errors}">Личные данные</a>-->
-<!--                    <a th:href="@{/resources/templates/page_with_errors}">Уведомления</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="navbar new-order">-->
-<!--            <a th:href="@{/resources/templates/order_create}" class="new-card-link">-->
-<!--                Создать наряд-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="navbar new-order">-->
-<!--            <a th:href="@{/resources/templates/card_create}" class="new-card-link">-->
-<!--                Создать наряд-->
-<!--            </a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</header>-->
-<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--        <div class="container-fluid">-->
-<!--            <a class="navbar-brand" href="#">Navbar</a>-->
-<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--                <span class="navbar-toggler-icon"></span>-->
-<!--            </button>-->
-<!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--                <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link active" aria-current="page" href="#">Home</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="#">Link</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                            Dropdown-->
-<!--                        </a>-->
-<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                            <li><a class="dropdown-item" href="#">Action</a></li>-->
-<!--                            <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--                            <li><hr class="dropdown-divider"></li>-->
-<!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--                <form class="d-flex">-->
-<!--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </nav>-->
-
-<header  th:fragment="menu">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark main-menu">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/resources/templates/order_list}">Наряды</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/resources/templates/page_with_errors}">Доска</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/resources/templates/page_with_errors}">Сервисы</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" th:href="@{/resources/templates/page_with_errors}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Настройки
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/resources/templates/page_with_errors}">Уведомления</a></li>
-                            <li><a class="dropdown-item" th:href="@{/resources/templates/page_with_errors}">Личные данные</a></li>
-<!--                            <li><hr class="dropdown-divider"></li>-->
-<!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetArm" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Настройки АРМА
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownSetArm">
-                            <li><a class="dropdown-item" th:href="@{/resources/templates/page_with_errors}">Группы</a></li>
-                            <li><a class="dropdown-item" th:href="@{/resources/templates/page_with_errors}">Системы</a></li>
-                            <li><a class="dropdown-item" th:href="@{/resources/templates/page_with_errors}">Пользователи</a></li>
-                            <!--                            <li><hr class="dropdown-divider"></li>-->
-                            <!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/resources/templates/order_create}">Создать наряд</a>
-                    </li>
-                </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-        </div>
-    </nav>
-</header>
+    <header  th:fragment="menu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark main-menu">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/templates/order_list}">Наряды</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/templates/page_with_errors}">Доска</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/templates/page_with_errors}">Сервисы</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" th:href="@{/templates/page_with_errors}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Настройки
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" th:href="@{/templates/page_with_errors}">Уведомления</a></li>
+                                <li><a class="dropdown-item" th:href="@{/templates/page_with_errors}">Личные данные</a></li>
+    <!--                            <li><hr class="dropdown-divider"></li>-->
+    <!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSetArm" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Настройки АРМА
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownSetArm">
+                                <li><a class="dropdown-item" th:href="@{/templates/page_with_errors}">Группы</a></li>
+                                <li><a class="dropdown-item" th:href="@{/templates/page_with_errors}">Системы</a></li>
+                                <li><a class="dropdown-item" th:href="@{/templates/page_with_errors}">Пользователи</a></li>
+                                <!--                            <li><hr class="dropdown-divider"></li>-->
+                                <!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/templates/order_create}">Создать наряд</a>
+                        </li>
+                    </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            </div>
+        </nav>
+    </header>
 </body>
 </html>

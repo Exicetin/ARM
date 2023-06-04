@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class Controller {
     @GetMapping(value = "/")
-    public ModelAndView index(){
+    public ModelAndView showIndex(){
         ModelAndView mav = new ModelAndView("orders_list");
         return mav;
     }

@@ -32,7 +32,7 @@
         Номер будет присвоен автоматически
       </td>
       <td class="create-with-template">
-        <input type="checkbox" id="template">
+        <input type="checkbox" id="template" class="form-check-input">
         <label for="template">Сохранить как шаблон</label>
       </td>
     </tr>
@@ -41,12 +41,12 @@
         Система
       </td>
       <td class="h2" colspan="2">
-<!--        <select th:field="*{systems}">-->
-<!--          <option th:each="ocSys:${systemList}"-->
-<!--                  th:value="${ocSys.system}"-->
-<!--                  th:text="${ocSys.system}"></option>-->
-<!--        </select>-->
-        <input type="text" th:field="*{systems}" placeholder="Система">
+        <select th:field="*{systems}">
+          <option th:each="ocSys:${systemList}"
+                  th:value="${ocSys.system}"
+                  th:text="${ocSys.system}"></option>
+        </select>
+<!--        <input type="text" th:field="*{systems}" placeholder="Система">-->
       </td>
     </tr>
     <tr>
@@ -246,7 +246,7 @@
     <tr>
       <td class="td4">
         <label>
-          <select id="H_STOP_SYSTEM" th:field="*{stopSystem}">
+          <select id="H_STOP_SYSTEM" class="form-select form-select-sm" aria-label=".form-select-sm example" th:field="*{stopSystem}">
             <option value="1">
               Да
             </option>

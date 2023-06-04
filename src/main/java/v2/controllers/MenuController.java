@@ -12,7 +12,7 @@ import v2.Service.OrderService;
 //import v2.model.request.CreateUserRequest;
 
 @Controller
-@RequestMapping("resources/templates")
+@RequestMapping("/templates")
 @RequiredArgsConstructor
 public class MenuController {
 //    private final SystemService systemService;
