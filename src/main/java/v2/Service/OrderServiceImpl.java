@@ -6,21 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import v2.domain.CardV2;
 import v2.domain.Orders;
-import v2.model.request.CreateCardRequest;
 import v2.model.request.CreateOrderRequest;
-import v2.model.response.CardResponse;
 import v2.model.response.OrderResponse;
-import v2.repository.CardRepository;
 import v2.repository.OrderRepository;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.util.Optional.of;
-import static java.util.Optional.ofNullable;
 
 @Service
 @RequiredArgsConstructor
@@ -38,6 +30,7 @@ public class OrderServiceImpl implements OrderService {
                 .collect(Collectors.toList());
 
     }
+
 
 //    @Override
 //    public @NotNull List<OrderResponse> findByIdCard(Integer idCard) {
@@ -112,6 +105,16 @@ public class OrderServiceImpl implements OrderService {
                 .orElseThrow(() -> new EntityNotFoundException("Order " + idOrders + " is not found"));
     }
 
+//    @NotNull
+//    @Override
+//    @Transactional(readOnly = true)
+//    public OrderResponse findByTemplate(Boolean template) {
+//        return orderRepository.findByTemplate(template)
+//                .stream()
+//                .map(this::buildOrderResponse)
+//                .collect(Collectors.toList());
+//    }
+
     @NotNull
     @Override
     @Transactional(readOnly = true)
@@ -146,7 +149,6 @@ public class OrderServiceImpl implements OrderService {
 //        Orders cv = buildOrderRequest(request);
 //        return buildOrderResponse(orderRepository.save(cv));
 //    }
-
     @NotNull
     @Override
     @Transactional
@@ -156,7 +158,6 @@ public class OrderServiceImpl implements OrderService {
         Orders cv = buildOrderRequest(request);
         return buildOrderResponse(orderRepository.save(cv));
     }
-
 
     //Удаляем пользователя по id
     @Override
@@ -221,6 +222,7 @@ public class OrderServiceImpl implements OrderService {
                 .dateInstallProd(orders.getDateInstallProd())
                 .phoneCTSOtv(orders.getPhoneCTSOtv())
                 .idDelegate(orders.getIdDelegate())
+                .template(orders.getTemplate())
                 .assemblyLink(orders.getAssemblyLink()).build();
     }
 
@@ -274,6 +276,7 @@ public class OrderServiceImpl implements OrderService {
                 .dataSourceProd(request.getDataSourceProd())
                 .dateInstallProd(request.getDateInstallProd())
                 .idDelegate(request.getIdDelegate())
+                .template(request.getTemplate())
                 .assemblyLink(request.getAssemblyLink()).build();
 
     }

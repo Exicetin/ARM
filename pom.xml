@@ -53,6 +53,7 @@
 		<!--			<artifactId>spring-boot-starter-tomcat</artifactId>-->
 		<!--		</dependency>-->
 
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -78,7 +79,12 @@
 			<artifactId>spring-boot-autoconfigure</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-<!--		<dependency>-->
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+		<!--		<dependency>-->
 <!--			<groupId>org.hibernate.orm</groupId>-->
 <!--			<artifactId>hibernate-core</artifactId>-->
 <!--			<version>6.1.5.Final</version>-->

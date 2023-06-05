@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import v2.Service.CardService;
 import v2.Service.OrderService;
+import v2.model.response.OrderResponse;
 //import v2.Service.SystemService;
 //import v2.Service.UserService;
 //import v2.model.request.CreateUserRequest;
 
 @Controller
-@RequestMapping("resources/templates")
+@RequestMapping("/templates")
 @RequiredArgsConstructor
 public class MenuController {
 //    private final SystemService systemService;
@@ -41,6 +42,13 @@ public class MenuController {
         mav.addObject("listOrders", orderService.findAll());
         return mav;
     }
+
+//    @GetMapping("/templates_list")
+//    public ModelAndView openTemplatesList() {
+//        ModelAndView mav = new ModelAndView("templates_list");
+//
+//        return mav;
+//    }
 
 //    @GetMapping("/user_list")
 //    public ModelAndView openUserList(){

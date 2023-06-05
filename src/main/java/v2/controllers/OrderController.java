@@ -9,7 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import v2.Service.OrderService;
 //import v2.Service.SystemService;
+import v2.Service.SystemService;
 import v2.domain.Orders;
+import v2.logic.LinkDeveloper;
 import v2.logic.NextOrderNumber;
 import v2.model.request.CreateOrderRequest;
 import v2.model.response.OrderResponse;
@@ -21,11 +23,11 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("resources/templates/")
+@RequestMapping("/templates")
 @RequiredArgsConstructor
 public class OrderController {
 
-//    private final SystemService systemService;
+    private final SystemService systemService;
     private final OrderService orderService;
 
     //Получаем весь список карточек
@@ -40,6 +42,8 @@ public class OrderController {
 //        mav.addObject("listOrders", findAll());
 //        return mav;
 //    }
+
+
 
     @GetMapping("/order_view/{idOrders}")
     public ModelAndView openOrderView(/*@RequestParam*/@PathVariable Integer idOrders) {
@@ -88,25 +92,43 @@ public class OrderController {
         ModelAndView mav = new ModelAndView("order_create");
         CreateOrderRequest cr = new CreateOrderRequest();
         mav.addObject("order_create", cr);
-//        mav.addObject("systemList", systemService.findAll());
+        mav.addObject("systemList", systemService.findAll());
         return mav;
     }
 
+    public String linkDeveloper(String number) {
+        LinkDeveloper linkDeveloper = new LinkDeveloper();
+        return linkDeveloper.linkDeveloper(number);
+    }
+
+
     @RequestMapping( value ="/new_order", method =  RequestMethod.POST/*, consumes = MediaType.ALL_VALUE*/)
-    public String createOrder(/*@ModelAttribute*/ CreateOrderRequest request) throws ParseException {
+    public String createOrder(/*@ModelAttribute*/@RequestParam(name = "template", required = false) boolean template, CreateOrderRequest request) throws ParseException {
         ModelAndView mav = new ModelAndView("order_create");
+        System.out.println(template);
+        boolean temp = true;
+        if (template){
+            request.setTemplate(Boolean.valueOf("true"));
+            System.out.println("TRUE");
+        } else {
+            request.setTemplate(Boolean.valueOf("false"));
+            System.out.println("FALSE");
+        }
         String sys = request.getSystems();
         String number = nextOrderNumber(sys);
+        String linksAssembly = linkDeveloper(Integer.toString(request.getAssemblyNumber()));
+        request.setAssemblyLink(linksAssembly);
         System.out.println(number);
         request.setNumber(number);
+        request.setAssemblyLink(linksAssembly);
         request.setDateInstallProd(null);
         request.setDateInstallTest(null);
+        request.setStopSystem(2);
         request.setDateCreate(java.sql.Date.valueOf(LocalDate.now()));
         OrderResponse orderResponse =  orderService.create(request);
         return "redirect:order_list";
     }
 
-    //Для подтягивания шаблонных нарядов на вход строковое значение типа наряда
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{idOrder}")
     public String delete(@RequestParam int idOrder) {
@@ -150,14 +172,13 @@ public class OrderController {
         System.out.println(idOrder);
         OrderResponse orderResponse = orderService.update(idOrder, request);
         return "redirect:../../order_view/"+idOrder;
-
     }
     @GetMapping("order_edit_template/{idOrders}")
     public ModelAndView openEditWithTemplate(/*@RequestParam*/@PathVariable Integer idOrders) {
         ModelAndView mav = new ModelAndView("order_edit_template");
         CreateOrderRequest co = new CreateOrderRequest();
         mav.addObject("orderTemplate", orderService.findById(idOrders));
-//        mav.addObject("systemList", systemService.findAll());
+        mav.addObject("systemList", systemService.findAll());
         return mav;
     }
 
@@ -167,7 +188,5 @@ public class OrderController {
         request.setNumber(nextOrderNumber(request.getSystems()));
         OrderResponse orderResponse = orderService.create(request);
         return "redirect:../order_list";
-
     }
-
 }
