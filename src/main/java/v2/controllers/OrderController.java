@@ -103,8 +103,17 @@ public class OrderController {
 
 
     @RequestMapping( value ="/new_order", method =  RequestMethod.POST/*, consumes = MediaType.ALL_VALUE*/)
-    public String createOrder(/*@ModelAttribute*/ CreateOrderRequest request) throws ParseException {
+    public String createOrder(/*@ModelAttribute*/@RequestParam(name = "template", required = false) boolean template, CreateOrderRequest request) throws ParseException {
         ModelAndView mav = new ModelAndView("order_create");
+        System.out.println(template);
+        boolean temp = true;
+        if (template){
+            request.setTemplate(Boolean.valueOf("true"));
+            System.out.println("TRUE");
+        } else {
+            request.setTemplate(Boolean.valueOf("false"));
+            System.out.println("FALSE");
+        }
         String sys = request.getSystems();
         String number = nextOrderNumber(sys);
         String linksAssembly = linkDeveloper(Integer.toString(request.getAssemblyNumber()));
@@ -120,7 +129,6 @@ public class OrderController {
         return "redirect:order_list";
     }
 
-    //Для подтягивания шаблонных нарядов на вход строковое значение типа наряда
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{idOrder}")
     public String delete(@RequestParam int idOrder) {
@@ -180,7 +188,5 @@ public class OrderController {
         request.setNumber(nextOrderNumber(request.getSystems()));
         OrderResponse orderResponse = orderService.create(request);
         return "redirect:../order_list";
-
     }
-
 }

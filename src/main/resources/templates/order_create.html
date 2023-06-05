@@ -32,7 +32,7 @@
         Номер будет присвоен автоматически
       </td>
       <td class="create-with-template">
-        <input type="checkbox" id="template" class="form-check-input">
+        <input type="checkbox" th:field="*{template}" th:value="${order_create.template}" id="template" class="form-check-input">
         <label for="template">Сохранить как шаблон</label>
       </td>
     </tr>

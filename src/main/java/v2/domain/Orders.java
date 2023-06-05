@@ -31,9 +31,9 @@ public class Orders {
     private String changeObject;//изменяемый объект
     @Column(name = "version")
     private String version;//Номер версии изменений
-    @Column (name = "reasons")
+    @Column(name = "reasons")
     private String reasons;//Основание
-    @Column (name = "conditions")
+    @Column(name = "conditions")
     private String conditions;//Условия выполнения наряда
     @Column(name = "doc_change")
     private String docChange;//Изменения в документации
@@ -55,19 +55,19 @@ public class Orders {
     private String methodTestF;//Методика проверки функций Тест
     @Column(name = "rollback")
     private String rollback;//технология отката
-    @Column (name = "responsible_contact")
+    @Column(name = "responsible_contact")
     private String responsibleContact;//ответсвенный контакт
-    @Column (name = "stop_system")
+    @Column(name = "stop_system")
     private int stopSystem;//остановка системы 0-нет.1-да.
-    @Column (name = "down_time")
+    @Column(name = "down_time")
     private String downTime;//Время простоя системыinstall_prod
     @Column(name = "id_prog")
     private String idProg;//id программиста
-    @Column (name = "id_tech")
+    @Column(name = "id_tech")
     private String idTech;//id технолога
     @Column(name = "phone_tech")
     private String phoneTech;//телефон технолога
-    @Column (name = "phone_prog")
+    @Column(name = "phone_prog")
     private String phoneProg;//телефон программиста
     @Column(name = "id_adm")
     private String idAdm;//id администратора
@@ -83,19 +83,19 @@ public class Orders {
     private String synchronization;//Методика проверки функций Тест
     @Column(name = "date_install_test")
     private Date dateInstallTest;//технология отката
-    @Column (name = "time_install_test")
+    @Column(name = "time_install_test")
     private String timeInstallTest;//ответсвенный контакт
-    @Column (name = "id_contact_test")
+    @Column(name = "id_contact_test")
     private String idContactTest;//остановка системы 0-нет.1-да.
-    @Column (name = "phone_contact_test")
+    @Column(name = "phone_contact_test")
     private String phoneContactTest;//Время простоя системыinstall_prod
     @Column(name = "data_source_test")
     private String dataSourceTest;//id программиста
-    @Column (name = "period_test")
+    @Column(name = "period_test")
     private String periodTest;//id технолога
     @Column(name = "results_test")
     private String resultsTest;//телефон технолога
-    @Column (name = "results_test_conclusion")
+    @Column(name = "results_test_conclusion")
     private String resultsTestConclusion;//телефон программиста
     @Column(name = "fz_project")
     private String fzProject;//id администратора
@@ -121,6 +121,7 @@ public class Orders {
 
     @Column(name = "template")
     private Boolean template;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -128,6 +129,8 @@ public class Orders {
         Orders orders = (Orders) o;
         return Objects.equals(idOrder, orders.idOrder);
     }
+
+
 
     @Override
     public int hashCode() {
@@ -190,15 +193,4 @@ public class Orders {
                 '}';
     }
 
-    //Создаем связь OneToOne с системами
-//    @OneToOne(fetch = FetchType.EAGER, mappedBy="system")
-//    public System system;
-//
-//    public System getSystem() {
-//        return system;
-//    }
-//
-//    public void setSystem(System system) {
-//        this.system = system;
-//    }
 }
