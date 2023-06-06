@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Orders, Integer> {
 
-
+    List<Orders> findByTemplate(Boolean template);
 //    List<Orders> findByIdOtv(Integer id);
 //    List<Orders> findByIdProg(Integer id);
 //    List<Orders> findByDateCreate(Date date);

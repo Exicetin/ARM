@@ -14,6 +14,9 @@ public interface OrderService {
     @NotNull
     List<OrderResponse> findAll();
 
+    @NotNull
+    List<OrderResponse> findByTemplate(@NotNull Boolean template);
+
     //    @NotNull
 //    List<OrderResponse> findByIdCard (Integer idCard);
 //    @NotNull

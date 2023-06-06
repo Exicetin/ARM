@@ -31,6 +31,16 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
+    @NotNull
+    @Override
+    @Transactional(readOnly = true)
+    public List<OrderResponse> findByTemplate(@NotNull Boolean template) {
+        return orderRepository.findByTemplate(template)
+                .stream()
+                .map(this::buildOrderResponse)
+                .collect(Collectors.toList());
+    }
+
 
 //    @Override
 //    public @NotNull List<OrderResponse> findByIdCard(Integer idCard) {

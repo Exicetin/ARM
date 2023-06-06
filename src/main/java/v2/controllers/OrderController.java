@@ -15,6 +15,7 @@ import v2.logic.LinkDeveloper;
 import v2.logic.NextOrderNumber;
 import v2.model.request.CreateOrderRequest;
 import v2.model.response.OrderResponse;
+import v2.repository.OrderRepository;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,21 +31,6 @@ public class OrderController {
     private final SystemService systemService;
     private final OrderService orderService;
 
-    //Получаем весь список карточек
-//    @GetMapping(produces = APPLICATION_JSON_VALUE)
-//    public List<CardResponse> findAll() {
-//        return cardService.findAll();
-//    }
-
-//    @GetMapping("/order_list")
-//    public ModelAndView openList() {
-//        ModelAndView mav = new ModelAndView("orders_list");
-//        mav.addObject("listOrders", findAll());
-//        return mav;
-//    }
-
-
-
     @GetMapping("/order_view/{idOrders}")
     public ModelAndView openOrderView(/*@RequestParam*/@PathVariable Integer idOrders) {
         ModelAndView mav = new ModelAndView("order_view");
@@ -59,18 +45,6 @@ public class OrderController {
         return orderService.findAll();
     }
 
-    //public String getLastOrderNumber(){
-//    String number;
-//    List<OrderResponse> ListOrder = findAll();
-//    if(ListOrder!= null && !ListOrder.isEmpty()){
-//    OrderResponse or = ListOrder.get(ListOrder.size() - 1);
-//     number = or.getNumber();}
-//    else {
-//        number = "0";
-//    }
-//    System.out.println(number);
-//    return number;
-//}
     private Date dateNow() throws ParseException {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -96,11 +70,10 @@ public class OrderController {
         return mav;
     }
 
-    public String linkDeveloper(String number) {
+    public String linkDeveloper(String number,String system) {
         LinkDeveloper linkDeveloper = new LinkDeveloper();
-        return linkDeveloper.linkDeveloper(number);
+        return linkDeveloper.linkDeveloper(number,system);
     }
-
 
     @RequestMapping( value ="/new_order", method =  RequestMethod.POST/*, consumes = MediaType.ALL_VALUE*/)
     public String createOrder(/*@ModelAttribute*/@RequestParam(name = "template", required = false) boolean template, CreateOrderRequest request) throws ParseException {
@@ -116,7 +89,7 @@ public class OrderController {
         }
         String sys = request.getSystems();
         String number = nextOrderNumber(sys);
-        String linksAssembly = linkDeveloper(Integer.toString(request.getAssemblyNumber()));
+        String linksAssembly = linkDeveloper(Integer.toString(request.getAssemblyNumber()),request.getSystems());
         request.setAssemblyLink(linksAssembly);
         System.out.println(number);
         request.setNumber(number);
@@ -147,16 +120,6 @@ public class OrderController {
         NextOrderNumber nextOrderNumber = new NextOrderNumber(orderService);
         return nextOrderNumber.nextOrderNumber(sys);
     }
-    //Для подтягивания данных из карточки на вход нужно передать наполнения пользователем инфы про наряд,и данные карточки данные из которой нужно передать в наряд
-
-
-//    @GetMapping("order_edit/{idOrders}")
-//    public ModelAndView openEditWithId(/*@RequestParam*/@PathVariable Integer idOrders) {
-//        ModelAndView mav = new ModelAndView("order_edit");
-//        CreateOrderRequest co = new CreateOrderRequest();
-//        mav.addObject("orderKorr", orderService.findById(idOrders));
-//        return mav;
-//    }
 
     @GetMapping("order_edit/{idOrders}")
     public ModelAndView openEditWithId(/*@RequestParam*/@PathVariable Integer idOrders) {
